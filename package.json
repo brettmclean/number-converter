@@ -2,9 +2,9 @@
   "name": "number-converter",
   "version": "0.0.0",
   "description": "Converts numbers between different formats",
-  "main": "index.js",
+  "main": "./lib",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/jasmine"
   },
   "author": "Brett McLean",
   "devDependencies": {
