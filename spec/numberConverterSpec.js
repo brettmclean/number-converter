@@ -16,4 +16,11 @@ describe("A Number Converter", function() {
 		expect(NumberConverter.DECIMAL).not.toBe(undefined);
 	});
 
+	it("has convert and deconvert methods", function() {
+		var nc = new NumberConverter();
+		
+		expect(typeof nc.convert).toBe("function");
+		expect(typeof nc.deconvert).toBe("function");
+	});
+
 });
