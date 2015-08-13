@@ -22,4 +22,20 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.fromDecimal(1000)).toBe("M");
 		expect(rnm.fromDecimal(3888)).toBe("MMMDCCCLXXXVIII");
 	});
+
+	it("can convert decimal numbers to roman numbers requiring subtraction", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.fromDecimal(4)).toBe("IV");
+		expect(rnm.fromDecimal(9)).toBe("IX");
+		expect(rnm.fromDecimal(14)).toBe("XIV");
+		expect(rnm.fromDecimal(19)).toBe("XIX");
+		expect(rnm.fromDecimal(49)).toBe("XLIX");
+		expect(rnm.fromDecimal(99)).toBe("XCIX");
+		expect(rnm.fromDecimal(199)).toBe("CXCIX");
+		expect(rnm.fromDecimal(950)).toBe("CML");
+		expect(rnm.fromDecimal(999)).toBe("CMXCIX");
+		expect(rnm.fromDecimal(1994)).toBe("MCMXCIV");
+		expect(rnm.fromDecimal(3999)).toBe("MMMCMXCIX");
+	});
 });
