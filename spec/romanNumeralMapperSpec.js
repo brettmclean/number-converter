@@ -38,4 +38,18 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.fromDecimal(1994)).toBe("MCMXCIV");
 		expect(rnm.fromDecimal(3999)).toBe("MMMCMXCIX");
 	});
+
+	it("can convert simple roman numerals to decimal numbers", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.toDecimal("I")).toBe(1);
+		expect(rnm.toDecimal("III")).toBe(3);
+		expect(rnm.toDecimal("V")).toBe(5);
+		expect(rnm.toDecimal("X")).toBe(10);
+		expect(rnm.toDecimal("L")).toBe(50);
+		expect(rnm.toDecimal("C")).toBe(100);
+		expect(rnm.toDecimal("D")).toBe(500);
+		expect(rnm.toDecimal("M")).toBe(1000);
+		expect(rnm.toDecimal("MMMDCCCLXXXVIII")).toBe(3888);
+	});
 });
