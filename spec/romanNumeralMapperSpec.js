@@ -23,7 +23,7 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.fromDecimal(3888)).toBe("MMMDCCCLXXXVIII");
 	});
 
-	it("can convert decimal numbers to roman numbers requiring subtraction", function() {
+	it("can convert decimal numbers to roman numerals requiring subtraction", function() {
 		var rnm = new RomanNumeralMapper();
 
 		expect(rnm.fromDecimal(4)).toBe("IV");
@@ -51,5 +51,21 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.toDecimal("D")).toBe(500);
 		expect(rnm.toDecimal("M")).toBe(1000);
 		expect(rnm.toDecimal("MMMDCCCLXXXVIII")).toBe(3888);
+	});
+
+	it("can convert roman numerals requiring subtraction to decimal numbers", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.toDecimal("IV")).toBe(4);
+		expect(rnm.toDecimal("IX")).toBe(9);
+		expect(rnm.toDecimal("XIV")).toBe(14);
+		expect(rnm.toDecimal("XIX")).toBe(19);
+		expect(rnm.toDecimal("XLIX")).toBe(49);
+		expect(rnm.toDecimal("XCIX")).toBe(99);
+		expect(rnm.toDecimal("CXCIX")).toBe(199);
+		expect(rnm.toDecimal("CML")).toBe(950);
+		expect(rnm.toDecimal("CMXCIX")).toBe(999);
+		expect(rnm.toDecimal("MCMXCIV")).toBe(1994);
+		expect(rnm.toDecimal("MMMCMXCIX")).toBe(3999);
 	});
 });
