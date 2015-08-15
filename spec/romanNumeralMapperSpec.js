@@ -1,4 +1,5 @@
 var RomanNumeralMapper = require("../lib/mappers/RomanNumeralMapper");
+var ValueError = require("../lib/errors/ValueError");
 
 describe("A Roman Numeral Mapper", function() {
 
@@ -103,5 +104,17 @@ describe("A Roman Numeral Mapper", function() {
 		expect(function() {
 			rnm.fromDecimal({});
 		}).toThrowError(TypeError);
+	});
+
+	it("should throw a ValueError when fromDecimal is given a non-integer number", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.fromDecimal(3.141592654);
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			rnm.fromDecimal(2.000000000000001);
+		}).toThrowError(ValueError);
 	});
 });
