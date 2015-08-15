@@ -68,4 +68,20 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.toDecimal("MCMXCIV")).toBe(1994);
 		expect(rnm.toDecimal("MMMCMXCIX")).toBe(3999);
 	});
+
+	it("should throw a RangeError when given an invalid number", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.fromDecimal(0);
+		}).toThrowError(RangeError);
+
+		expect(function() {
+			rnm.fromDecimal(4000);
+		}).toThrowError(RangeError);
+
+		expect(function() {
+			rnm.fromDecimal(-123);
+		}).toThrowError(RangeError);
+	});
 });
