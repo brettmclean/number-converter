@@ -69,7 +69,7 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.toDecimal("MMMCMXCIX")).toBe(3999);
 	});
 
-	it("should throw a RangeError when given an invalid number", function() {
+	it("should throw a RangeError when fromDecimal is given a number outside of the valid range", function() {
 		var rnm = new RomanNumeralMapper();
 
 		expect(function() {
@@ -83,5 +83,25 @@ describe("A Roman Numeral Mapper", function() {
 		expect(function() {
 			rnm.fromDecimal(-123);
 		}).toThrowError(RangeError);
+	});
+
+	it("should throw a TypeError when fromDecimal is given a non-number", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.fromDecimal("Hello");
+		}).toThrowError(TypeError);
+
+		expect(function() {
+			rnm.fromDecimal(true);
+		}).toThrowError(TypeError);
+
+		expect(function() {
+			rnm.fromDecimal(function() {});
+		}).toThrowError(TypeError);
+
+		expect(function() {
+			rnm.fromDecimal({});
+		}).toThrowError(TypeError);
 	});
 });
