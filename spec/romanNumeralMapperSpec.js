@@ -117,4 +117,12 @@ describe("A Roman Numeral Mapper", function() {
 			rnm.fromDecimal(2.000000000000001);
 		}).toThrowError(ValueError);
 	});
+
+	it("should throw a ValueError when given roman numerals contain invalid characters", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.toDecimal("MCQXI");
+		}).toThrowError(ValueError);
+	});
 });
