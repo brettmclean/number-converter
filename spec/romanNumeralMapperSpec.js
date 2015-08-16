@@ -145,4 +145,20 @@ describe("A Roman Numeral Mapper", function() {
 			rnm.toDecimal("XM");
 		}).toThrowError(ValueError);
 	});
+
+	it("should throw a ValueError when given roman numerals that subtract numbers starting with 5", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.toDecimal("DM");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			rnm.toDecimal("LC");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			rnm.toDecimal("VX");
+		}).toThrowError(ValueError);
+	});
 });
