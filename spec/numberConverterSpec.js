@@ -30,6 +30,12 @@ describe("A Number Converter", function() {
 		expect(typeof nc.deconvert).toBe("function");
 	});
 
+	it("defaults to a base-10 number mapper", function() {
+		var nc = new NumberConverter();
+
+		expect(nc.convert(82)).toBe(82);
+	});
+
 	it("can convert roman numerals", function() {
 		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
 
