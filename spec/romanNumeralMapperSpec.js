@@ -125,4 +125,12 @@ describe("A Roman Numeral Mapper", function() {
 			rnm.toDecimal("MCQXI");
 		}).toThrowError(ValueError);
 	});
+
+	it("should throw a ValueError when given roman numerals with too many of a particular character in a row", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.toDecimal("IIII");
+		}).toThrowError(ValueError);
+	});
 });
