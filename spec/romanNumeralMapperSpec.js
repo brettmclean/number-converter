@@ -161,4 +161,16 @@ describe("A Roman Numeral Mapper", function() {
 			rnm.toDecimal("VX");
 		}).toThrowError(ValueError);
 	});
+
+	it("should throw a ValueError when given multiple matching numerals in a row which start with 5", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.toDecimal("VV");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			rnm.toDecimal("MMDDXI");
+		}).toThrowError(ValueError);
+	});
 });
