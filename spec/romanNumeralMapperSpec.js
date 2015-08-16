@@ -133,4 +133,16 @@ describe("A Roman Numeral Mapper", function() {
 			rnm.toDecimal("IIII");
 		}).toThrowError(ValueError);
 	});
+
+	it("should throw a ValueError when given roman numerals with invalid subtraction", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(function() {
+			rnm.toDecimal("IC");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			rnm.toDecimal("XM");
+		}).toThrowError(ValueError);
+	});
 });
