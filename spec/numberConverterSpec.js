@@ -9,6 +9,13 @@ describe("A Number Converter", function() {
 			var nc = new NumberConverter();
 			expect(nc instanceof NumberConverter).toBe(true);
 		});
+
+		it("requires only one number type", function() {
+			var nc = new NumberConverter(NumberConverter.ROMAN_NUMERAL);
+
+			expect(nc.convert(1111)).toBe("MCXI");
+			expect(nc.deconvert("DLV")).toBe(555);
+		});
 	});
 
 	it("has number type constants", function() {
@@ -18,9 +25,16 @@ describe("A Number Converter", function() {
 
 	it("has convert and deconvert methods", function() {
 		var nc = new NumberConverter();
-		
+
 		expect(typeof nc.convert).toBe("function");
 		expect(typeof nc.deconvert).toBe("function");
+	});
+
+	it("can convert roman numerals", function() {
+		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
+
+		expect(nc.convert(1234)).toBe("MCCXXXIV");
+		expect(nc.deconvert("MMCMCCXCLXIV")).toBe(3254);
 	});
 
 });
