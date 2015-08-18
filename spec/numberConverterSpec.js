@@ -36,6 +36,38 @@ describe("A Number Converter", function() {
 		expect(nc.convert(82)).toBe(82);
 	});
 
+	it("reverses a convert operation by its deconvert operation", function() {
+		var testData = [1, 500, 687, 1247, 1999, 3000, 3999];
+
+		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
+
+		for(var i = 0; i < testData.length; i++) {
+			expect(nc.deconvert(nc.convert(testData[i]))).toBe(testData[i]);
+		}
+	});
+
+	it("reverses a deconvert operation by its convert operation", function() {
+		var testData = [1, 500, 687, 1247, 1999, 3000, 3999];
+
+		var nc = new NumberConverter(NumberConverter.ROMAN_NUMERAL, NumberConverter.DECIMAL);
+
+		for(var i = 0; i < testData.length; i++) {
+			expect(nc.convert(nc.deconvert(testData[i]))).toBe(testData[i]);
+		}
+	});
+
+	it("can be reversed by another NumberConverter with opposite conversion types", function() {
+		var testData = [4, 498, 1000, 1568, 1799, 2845, 3666];
+
+		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
+		var nc2 = new NumberConverter(NumberConverter.ROMAN_NUMERAL, NumberConverter.DECIMAL);
+
+		for(var i = 0; i < testData.length; i++) {
+			expect(nc2.convert(nc.convert(testData[i]))).toBe(testData[i]);
+			expect(nc.deconvert(nc2.deconvert(testData[i]))).toBe(testData[i]);
+		}
+	});
+
 	it("can convert roman numerals", function() {
 		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
 
