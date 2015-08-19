@@ -39,4 +39,14 @@ describe("A Base-N Number Mapper", function() {
 		}).toThrowError(RangeError);
 	});
 
+	it("can convert binary numbers to decimal", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+
+		expect(baseNNumberMapper.toDecimal(0)).toBe(0);
+		expect(baseNNumberMapper.toDecimal(1)).toBe(1);
+		expect(baseNNumberMapper.toDecimal(10)).toBe(2);
+		expect(baseNNumberMapper.toDecimal(101010)).toBe(42);
+		expect(baseNNumberMapper.toDecimal(11111111)).toBe(255);
+	});
+
 });
