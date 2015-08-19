@@ -49,4 +49,13 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal(11111111)).toBe(255);
 	});
 
+	it("can accept numbers of type string or number", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+
+		expect(baseNNumberMapper.toDecimal(111)).toBe(7);
+		expect(baseNNumberMapper.toDecimal("111")).toBe(7);
+		expect(baseNNumberMapper.toDecimal(10101010)).toBe(170);
+		expect(baseNNumberMapper.toDecimal("10101010")).toBe(170);
+	});
+
 });
