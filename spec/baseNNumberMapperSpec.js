@@ -81,6 +81,17 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal("Z00")).toBe(45360);
 	});
 
+	it("can convert decimal numbers to binary", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+
+		expect(baseNNumberMapper.fromDecimal(0)).toBe("0");
+		expect(baseNNumberMapper.fromDecimal(1)).toBe("1");
+		expect(baseNNumberMapper.fromDecimal(2)).toBe("10");
+		expect(baseNNumberMapper.fromDecimal(42)).toBe("101010");
+		expect(baseNNumberMapper.fromDecimal(255)).toBe("11111111");
+		expect(baseNNumberMapper.fromDecimal(65536)).toBe("10000000000000000");
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
