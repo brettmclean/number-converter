@@ -92,6 +92,37 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(65536)).toBe("10000000000000000");
 	});
 
+	it("can convert decimal numbers to octal", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(8);
+
+		expect(baseNNumberMapper.fromDecimal(0)).toBe("0");
+		expect(baseNNumberMapper.fromDecimal(7)).toBe("7");
+		expect(baseNNumberMapper.fromDecimal(83)).toBe("123");
+		expect(baseNNumberMapper.fromDecimal(501)).toBe("765");
+		expect(baseNNumberMapper.fromDecimal(1000)).toBe("1750");
+		expect(baseNNumberMapper.fromDecimal(10000)).toBe("23420");
+	});
+
+	it("can convert decimal numbers to hexadecimal", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(16);
+
+		expect(baseNNumberMapper.fromDecimal(0)).toBe("0");
+		expect(baseNNumberMapper.fromDecimal(15)).toBe("F");
+		expect(baseNNumberMapper.fromDecimal(48879)).toBe("BEEF");
+		expect(baseNNumberMapper.fromDecimal(11259375)).toBe("ABCDEF");
+		expect(baseNNumberMapper.fromDecimal(262926349)).toBe("FABF00D");
+		expect(baseNNumberMapper.fromDecimal(4886718345)).toBe("123456789");
+	});
+
+	it("can convert decimal numbers to base-36", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(36);
+
+		expect(baseNNumberMapper.fromDecimal(0)).toBe("0");
+		expect(baseNNumberMapper.fromDecimal(35)).toBe("Z");
+		expect(baseNNumberMapper.fromDecimal(395)).toBe("AZ");
+		expect(baseNNumberMapper.fromDecimal(45360)).toBe("Z00");
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
