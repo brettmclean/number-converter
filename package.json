@@ -23,5 +23,6 @@
   ],
   "devDependencies": {
     "jasmine": "~2.3.2"
-  }
+  },
+  "license": "MIT"
 }
