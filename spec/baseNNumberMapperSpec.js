@@ -1,4 +1,5 @@
 var BaseNNumberMapper = require("../lib/mappers/BaseNNumberMapper");
+var ValueError = require("../lib/errors/ValueError");
 
 describe("A Base-N Number Mapper", function() {
 
@@ -130,6 +131,25 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal("111")).toBe(7);
 		expect(baseNNumberMapper.toDecimal(10101010)).toBe(170);
 		expect(baseNNumberMapper.toDecimal("10101010")).toBe(170);
+	});
+
+	it("only accepts characters appropriate for the chosen base", function() {
+
+		expect(function() {
+			var bnnm = new BaseNNumberMapper(2);
+			bnnm.toDecimal("01210");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			var bnnm = new BaseNNumberMapper(8);
+			bnnm.toDecimal("15873");
+		}).toThrowError(ValueError);
+
+		expect(function() {
+			var bnnm = new BaseNNumberMapper(16);
+			bnnm.toDecimal("ABCDEFG");
+		}).toThrowError(ValueError);
+
 	});
 
 });
