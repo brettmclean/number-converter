@@ -1,12 +1,26 @@
 {
   "name": "number-converter",
   "version": "0.0.0",
-  "description": "Converts numbers between different formats",
+  "description": "Converts numbers between various formats",
+  "author": "Brett McLean <brettrmclean@gmail.com>",
   "main": "./lib",
   "scripts": {
     "test": "./node_modules/.bin/jasmine"
   },
-  "author": "Brett McLean",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brettmclean/number-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brettmclean/number-converter/issues"
+  },
+  "keywords": [
+    "roman numerals",
+    "binary",
+    "octal",
+    "decimal",
+    "hexadecimal"
+  ],
   "devDependencies": {
     "jasmine": "~2.3.2"
   }
