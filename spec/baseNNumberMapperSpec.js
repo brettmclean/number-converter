@@ -152,4 +152,12 @@ describe("A Base-N Number Mapper", function() {
 
 	});
 
+	it("only allows certain characters for each number", function() {
+		var bnnm = new BaseNNumberMapper();
+
+		expect(function() {
+			bnnm.toDecimal("?");
+		}).toThrowError(ValueError);
+	});
+
 });
