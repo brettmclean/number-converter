@@ -23,6 +23,7 @@ describe("A Number Converter", function() {
 		expect(NumberConverter.BINARY).not.toBe(undefined);
 		expect(NumberConverter.OCTAL).not.toBe(undefined);
 		expect(NumberConverter.DECIMAL).not.toBe(undefined);
+		expect(NumberConverter.HEXADECIMAL).not.toBe(undefined);
 	});
 
 	it("has convert and deconvert methods", function() {
@@ -70,7 +71,7 @@ describe("A Number Converter", function() {
 		}
 	});
 
-	it("can convert roman numerals", function() {
+	it("can convert between decimal numbers and roman numerals", function() {
 		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.ROMAN_NUMERAL);
 
 		expect(nc.convert(1234)).toBe("MCCXXXIV");
@@ -82,6 +83,13 @@ describe("A Number Converter", function() {
 
 		expect(nc.convert(110010010)).toBe("622");
 		expect(nc.deconvert(3456)).toBe("11100101110");
+	});
+
+	it("can convert between hexadecimal numbers and roman numerals", function() {
+		var nc = new NumberConverter(NumberConverter.HEXADECIMAL, NumberConverter.ROMAN_NUMERAL);
+
+		expect(nc.convert("ABE")).toBe("MMDCCL");
+		expect(nc.deconvert("MCMXLVII")).toBe("79B");
 	});
 
 });
