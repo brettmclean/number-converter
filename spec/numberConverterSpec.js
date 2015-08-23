@@ -20,6 +20,8 @@ describe("A Number Converter", function() {
 
 	it("has number type constants", function() {
 		expect(NumberConverter.ROMAN_NUMERAL).not.toBe(undefined);
+		expect(NumberConverter.BINARY).not.toBe(undefined);
+		expect(NumberConverter.OCTAL).not.toBe(undefined);
 		expect(NumberConverter.DECIMAL).not.toBe(undefined);
 	});
 
@@ -73,6 +75,13 @@ describe("A Number Converter", function() {
 
 		expect(nc.convert(1234)).toBe("MCCXXXIV");
 		expect(nc.deconvert("MMCMCCXCLXIV")).toBe(3254);
+	});
+
+	it("can convert between binary and octal numbers", function() {
+		var nc = new NumberConverter(NumberConverter.BINARY, NumberConverter.OCTAL);
+
+		expect(nc.convert(110010010)).toBe("622");
+		expect(nc.deconvert(3456)).toBe("11100101110");
 	});
 
 });
