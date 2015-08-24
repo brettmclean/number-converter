@@ -13,7 +13,7 @@ console.log(nc.deconvert("MCMXCIX")); // 1999
 
 ## Installation
 
-To use number-converter in your Node.js project, run
+To use number-converter in your Node.js project, run:
 ```
 npm install brettmclean/number-converter --save
 ```
