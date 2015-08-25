@@ -11,6 +11,21 @@ console.log(nc.convert(1234)); // MCCXXXIV
 console.log(nc.deconvert("MCMXCIX")); // 1999
 ```
 
+## Number Types
+
+A NumberConverter can convert between different numeric representations specified in its constructor. To convert between hexadecimal and binary, write:
+```
+var nc = new NumberConverter(NumberConverter.HEXADECIMAL, NumberConverter.BINARY);
+console.log(nc.convert("F8F")); // "111110001111"
+```
+
+Here are the available number types:
+* `NumberConverter.DECIMAL` - Base-10 number system (digits 0-9)
+* `NumberConverter.BINARY` - Base-2 number system (digits 0 and 1)
+* `NumberConverter.OCTAL` - Base-8 number system (digits 0-7)
+* `NumberConverter.HEXADECIMAL` - Base-16 number system (digits 0-9 and letters A-F)
+* `NumberConverter.ROMAN_NUMERAL` - Numeric system used in ancient Rome (letters I, V, X, L, C, D and M)
+
 ## Installation
 
 To use number-converter in your Node.js project, run:
