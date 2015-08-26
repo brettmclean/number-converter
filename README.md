@@ -1,4 +1,5 @@
-# number-converter
+# number-converter [![Build Status](https://travis-ci.org/brettmclean/number-converter.svg?branch=master)](https://travis-ci.org/brettmclean/number-converter)
+
 A Node.js library for converting between different numeric representations.
 
 ## Usage
