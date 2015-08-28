@@ -13,6 +13,8 @@ describe("A Scientific Notation Mapper", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.fromDecimal(3)).toBe("3e0");
+		expect(snm.fromDecimal(500)).toBe("5e2");
+		expect(snm.fromDecimal(12345)).toBe("1.2345e4");
 	});
 
 });
