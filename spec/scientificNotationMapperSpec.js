@@ -9,12 +9,27 @@ describe("A Scientific Notation Mapper", function() {
 		expect(typeof snm.fromDecimal).toBe("function");
 	});
 
-	it("can convert positive, whole decimal numbers to scientific notation", function() {
+	it("can convert whole decimal numbers greater than one to scientific notation", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.fromDecimal(3)).toBe("3e0");
 		expect(snm.fromDecimal(500)).toBe("5e2");
+		expect(snm.fromDecimal(10000000)).toBe("1e7");
+
+		expect(snm.fromDecimal(3141592654)).toBe("3.141592654e9");
 		expect(snm.fromDecimal(12345)).toBe("1.2345e4");
+	});
+
+	it("can convert fractional decimal numbers greater than one to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal(1.2345)).toBe("1.2345e0");
+		expect(snm.fromDecimal(12.345)).toBe("1.2345e1");
+		expect(snm.fromDecimal(123.45)).toBe("1.2345e2");
+		expect(snm.fromDecimal(1234.5)).toBe("1.2345e3");
+
+		expect(snm.fromDecimal(984.18000)).toBe("9.8418e2");
+		expect(snm.fromDecimal(984.180001)).toBe("9.84180001e2");
 	});
 
 });
