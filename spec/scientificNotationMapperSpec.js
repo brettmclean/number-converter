@@ -32,4 +32,21 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.fromDecimal(984.180001)).toBe("9.84180001e2");
 	});
 
+	it("can convert positive decimal numbers less than one to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal(0.99999)).toBe("9.9999e-1");
+		expect(snm.fromDecimal(0.5)).toBe("5e-1");
+		expect(snm.fromDecimal(0.12345)).toBe("1.2345e-1");
+		expect(snm.fromDecimal(0.0000001)).toBe("1e-7");
+		expect(snm.fromDecimal(0.00101010)).toBe("1.0101e-3");
+		expect(snm.fromDecimal(0.0000025)).toBe("2.5e-6");
+	});
+
+	it("can convert zero to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal(0)).toBe("0e0");
+	});
+
 });
