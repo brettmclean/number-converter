@@ -32,6 +32,12 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.fromDecimal(984.180001)).toBe("9.84180001e2");
 	});
 
+	it("can convert one to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal(1)).toBe("1e0");
+	});
+
 	it("can convert positive decimal numbers less than one to scientific notation", function() {
 		var snm = new ScientificNotationMapper();
 
