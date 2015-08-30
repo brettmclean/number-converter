@@ -5,8 +5,10 @@
   "author": "Brett McLean <brettrmclean@gmail.com>",
   "main": "./lib",
   "scripts": {
+    "test": "./node_modules/.bin/jasmine",
     "lint": "./node_modules/jshint/bin/jshint ./lib ./spec",
-    "test": "./node_modules/.bin/jasmine"
+    "style": "./node_modules/jscs/bin/jscs ./lib ./spec"
+
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,8 @@
   ],
   "devDependencies": {
     "jasmine": "~2.3.2",
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "jscs": "^2.1.1"
   },
   "license": "MIT"
 }
