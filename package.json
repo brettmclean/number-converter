@@ -7,8 +7,8 @@
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
     "lint": "./node_modules/jshint/bin/jshint ./lib ./spec",
-    "style": "./node_modules/jscs/bin/jscs ./lib ./spec"
-
+    "style": "./node_modules/jscs/bin/jscs ./lib ./spec",
+    "check": "npm test; npm run lint; npm run style"
   },
   "repository": {
     "type": "git",
