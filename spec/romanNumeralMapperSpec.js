@@ -70,6 +70,14 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.toDecimal("MMMCMXCIX")).toBe(3999);
 	});
 
+	it("can convert roman numerals containing lowercase characters", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.toDecimal("i")).toBe(1);
+		expect(rnm.toDecimal("mdclxvi")).toBe(1666);
+		expect(rnm.toDecimal("MmdCclXxvIi")).toBe(2777);
+	});
+
 	it("should throw a RangeError when fromDecimal is given a number outside of the valid range", function() {
 		var rnm = new RomanNumeralMapper();
 
