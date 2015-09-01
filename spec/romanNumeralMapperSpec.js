@@ -78,6 +78,14 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.toDecimal("MmdCclXxvIi")).toBe(2777);
 	});
 
+	it("can convert positive fractional decimal numbers to roman numerals", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.fromDecimal(12.345)).toBe("XII");
+		expect(rnm.fromDecimal(9.99999)).toBe("IX");
+		expect(rnm.fromDecimal(1234.5678)).toBe("MCCXXXIV");
+	});
+
 	it("should throw a RangeError when fromDecimal is given a number outside of the valid range", function() {
 		var rnm = new RomanNumeralMapper();
 
@@ -112,18 +120,6 @@ describe("A Roman Numeral Mapper", function() {
 		expect(function() {
 			rnm.fromDecimal({});
 		}).toThrowError(TypeError);
-	});
-
-	it("should throw a ValueError when fromDecimal is given a non-integer number", function() {
-		var rnm = new RomanNumeralMapper();
-
-		expect(function() {
-			rnm.fromDecimal(3.141592654);
-		}).toThrowError(ValueError);
-
-		expect(function() {
-			rnm.fromDecimal(2.000000000000001);
-		}).toThrowError(ValueError);
 	});
 
 	it("should throw a ValueError when given roman numerals contain invalid characters", function() {
