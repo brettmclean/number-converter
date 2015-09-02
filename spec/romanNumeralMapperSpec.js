@@ -86,6 +86,14 @@ describe("A Roman Numeral Mapper", function() {
 		expect(rnm.fromDecimal(1234.5678)).toBe("MCCXXXIV");
 	});
 
+	it("can convert strings containing decimal numbers to roman numerals", function() {
+		var rnm = new RomanNumeralMapper();
+
+		expect(rnm.fromDecimal("1")).toBe("I");
+		expect(rnm.fromDecimal("49")).toBe("XLIX");
+		expect(rnm.fromDecimal("2999")).toBe("MMCMXCIX");
+	});
+
 	it("should throw a RangeError when fromDecimal is given a number outside of the valid range", function() {
 		var rnm = new RomanNumeralMapper();
 
