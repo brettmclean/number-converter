@@ -82,13 +82,33 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.fromDecimal(1)).toBe("1e0");
 	});
 
-	it("can convert scientific notation in MeN format to decimal", function() {
+	it("can convert MeN notation with positive coefficients and exponents to decimal", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.toDecimal("5e4")).toBe(50000);
 		expect(snm.toDecimal("1.23456789e1")).toBe(12.3456789);
 		expect(snm.toDecimal("7.777e0")).toBe(7.777);
+	});
+
+	it("can convert MeN notation with positive coefficients and negative exponents to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
 		expect(snm.toDecimal("1.25e-5")).toBe(0.0000125);
+		expect(snm.toDecimal("9e-0")).toBe(9);
+	});
+
+	it("can convert MeN notation with negative coefficients and positive exponents to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("-5e4")).toBe(-50000);
+		expect(snm.toDecimal("-123.456e2")).toBe(-12345.6);
+	});
+
+	it("can convert MeN notation with negative coefficients and exponents to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("-5e-4")).toBe(-0.0005);
+		expect(snm.toDecimal("-1e-1")).toBe(-0.1);
 	});
 
 	it("can convert scientific notation to decimal regardless of case", function() {
