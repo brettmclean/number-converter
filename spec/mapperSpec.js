@@ -23,6 +23,26 @@ var createTestsForMapper = function(mapperInfo) {
 			expect(typeof bnnm.fromDecimal).toBe("function");
 		});
 
+		it("should throw a TypeError when fromDecimal is given a non-number", function() {
+			var rnm = new RomanNumeralMapper();
+
+			expect(function() {
+				rnm.fromDecimal("Hello");
+			}).toThrowError(TypeError);
+
+			expect(function() {
+				rnm.fromDecimal(true);
+			}).toThrowError(TypeError);
+
+			expect(function() {
+				rnm.fromDecimal(function() {});
+			}).toThrowError(TypeError);
+
+			expect(function() {
+				rnm.fromDecimal({});
+			}).toThrowError(TypeError);
+		});
+
 	});
 };
 

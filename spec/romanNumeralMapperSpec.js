@@ -103,26 +103,6 @@ describe("A Roman Numeral Mapper", function() {
 		}).toThrowError(RangeError);
 	});
 
-	it("should throw a TypeError when fromDecimal is given a non-number", function() {
-		var rnm = new RomanNumeralMapper();
-
-		expect(function() {
-			rnm.fromDecimal("Hello");
-		}).toThrowError(TypeError);
-
-		expect(function() {
-			rnm.fromDecimal(true);
-		}).toThrowError(TypeError);
-
-		expect(function() {
-			rnm.fromDecimal(function() {});
-		}).toThrowError(TypeError);
-
-		expect(function() {
-			rnm.fromDecimal({});
-		}).toThrowError(TypeError);
-	});
-
 	it("should throw a ValueError when given roman numerals contain invalid characters", function() {
 		var rnm = new RomanNumeralMapper();
 
