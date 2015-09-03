@@ -3,13 +3,6 @@ var ValueError = require("../lib/errors/ValueError");
 
 describe("A Base-N Number Mapper", function() {
 
-	it("has toDecimal and fromDecimal methods", function() {
-		var bnnm = new BaseNNumberMapper();
-
-		expect(typeof bnnm.toDecimal).toBe("function");
-		expect(typeof bnnm.fromDecimal).toBe("function");
-	});
-
 	it("should throw a RangeError when given a negative number", function() {
 		var bnnm = new BaseNNumberMapper();
 

@@ -3,13 +3,6 @@ var ValueError = require("../lib/errors/ValueError");
 
 describe("A Roman Numeral Mapper", function() {
 
-	it("has toDecimal and fromDecimal methods", function() {
-		var rnm = new RomanNumeralMapper();
-
-		expect(typeof rnm.toDecimal).toBe("function");
-		expect(typeof rnm.fromDecimal).toBe("function");
-	});
-
 	it("can convert decimal numbers to simple roman numerals", function() {
 		var rnm = new RomanNumeralMapper();
 
