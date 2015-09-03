@@ -91,4 +91,10 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.toDecimal("1.25e-5")).toBe(0.0000125);
 	});
 
+	it("can convert scientific notation to decimal regardless of case", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("6.5E10")).toBe(65000000000);
+	});
+
 });
