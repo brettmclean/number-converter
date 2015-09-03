@@ -82,4 +82,13 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.fromDecimal(1)).toBe("1e0");
 	});
 
+	it("can convert scientific notation in MeN format to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("5e4")).toBe(50000);
+		expect(snm.toDecimal("1.23456789e1")).toBe(12.3456789);
+		expect(snm.toDecimal("7.777e0")).toBe(7.777);
+		expect(snm.toDecimal("1.25e-5")).toBe(0.0000125);
+	});
+
 });
