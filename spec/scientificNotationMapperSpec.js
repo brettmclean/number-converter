@@ -111,10 +111,24 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.toDecimal("-1e-1")).toBe(-0.1);
 	});
 
+	it("can convert M*10^N notation to decimal");
+
+	it("can convert M*10**N notation to decimal");
+
 	it("can convert scientific notation to decimal regardless of case", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.toDecimal("6.5E10")).toBe(65000000000);
+	});
+
+	it("can convert scientific notation to decimal regardless of whitespace");
+
+	it("will ignore plus signs on coefficient and exponent portions of scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("+5e+4")).toBe(50000);
+		expect(snm.toDecimal("5e+4")).toBe(50000);
+		expect(snm.toDecimal("+5e4")).toBe(50000);
 	});
 
 });
