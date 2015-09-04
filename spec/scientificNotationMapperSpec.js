@@ -121,7 +121,13 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.toDecimal("6.5E10")).toBe(65000000000);
 	});
 
-	it("can convert scientific notation to decimal regardless of whitespace");
+	it("can convert scientific notation to decimal regardless of whitespace", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("3 e 3")).toBe(3000);
+		expect(snm.toDecimal("          8.26e               5")).toBe(826000);
+		expect(snm.toDecimal("	1	.	2	3		e				2")).toBe(123);
+	});
 
 	it("will ignore plus signs on coefficient and exponent portions of scientific notation", function() {
 		var snm = new ScientificNotationMapper();
