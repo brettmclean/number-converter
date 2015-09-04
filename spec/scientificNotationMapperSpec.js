@@ -111,7 +111,12 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.toDecimal("-1e-1")).toBe(-0.1);
 	});
 
-	it("can convert M*10^N notation to decimal");
+	it("can convert M*10^N notation to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("2*10^10")).toBe(20000000000);
+		expect(snm.toDecimal("5x10^5")).toBe(500000);
+	});
 
 	it("can convert M*10**N notation to decimal");
 
