@@ -118,12 +118,18 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.toDecimal("5x10^5")).toBe(500000);
 	});
 
-	it("can convert M*10**N notation to decimal");
+	it("can convert M*10**N notation to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.toDecimal("2*10**10")).toBe(20000000000);
+		expect(snm.toDecimal("5x10**5")).toBe(500000);
+	});
 
 	it("can convert scientific notation to decimal regardless of case", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.toDecimal("6.5E10")).toBe(65000000000);
+		expect(snm.toDecimal("9X10^3")).toBe(9000);
 	});
 
 	it("can convert scientific notation to decimal regardless of whitespace", function() {
