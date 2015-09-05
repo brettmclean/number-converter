@@ -115,6 +115,11 @@ describe("A Scientific Notation Mapper", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.toDecimal("2*10^10")).toBe(20000000000);
+	});
+
+	it("can convert Mx10^N notation to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
 		expect(snm.toDecimal("5x10^5")).toBe(500000);
 	});
 
@@ -122,6 +127,11 @@ describe("A Scientific Notation Mapper", function() {
 		var snm = new ScientificNotationMapper();
 
 		expect(snm.toDecimal("2*10**10")).toBe(20000000000);
+	});
+
+	it("can convert Mx10**N notation to decimal", function() {
+		var snm = new ScientificNotationMapper();
+
 		expect(snm.toDecimal("5x10**5")).toBe(500000);
 	});
 
