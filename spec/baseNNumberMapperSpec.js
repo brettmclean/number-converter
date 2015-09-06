@@ -87,6 +87,7 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(42)).toBe("101010");
 		expect(baseNNumberMapper.fromDecimal(255)).toBe("11111111");
 		expect(baseNNumberMapper.fromDecimal(65536)).toBe("10000000000000000");
+		expect(baseNNumberMapper.fromDecimal(2097153)).toBe("1000000000000000000001");
 	});
 
 	it("can convert decimal numbers to octal", function() {
