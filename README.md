@@ -26,6 +26,7 @@ Here are the available number types:
 * `NumberConverter.OCTAL` - Base-8 number system (digits 0-7)
 * `NumberConverter.HEXADECIMAL` - Base-16 number system (digits 0-9 and letters A-F)
 * `NumberConverter.ROMAN_NUMERAL` - Numeric system used in ancient Rome (letters I, V, X, L, C, D and M)
+* `NumberConverter.SCIENTIFIC_NOTATION` - Scientific notation (e.g. 5.2e3 -> 5200)
 
 ## Installation
 
