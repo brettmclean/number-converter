@@ -106,4 +106,27 @@ describe("A Number Converter", function() {
 		expect(nc.deconvert("MMMCMLXXVIII")).toBe("3.978e3");
 	});
 
+	it("can convert between multiple formats without loss of precision", function() {
+
+		var decimalValue = 3963.998;
+
+		var nc = new NumberConverter(NumberConverter.DECIMAL, NumberConverter.SCIENTIFIC_NOTATION);
+		var otherValue = nc.convert(decimalValue);
+
+		nc = new NumberConverter(NumberConverter.SCIENTIFIC_NOTATION, NumberConverter.BINARY);
+		otherValue = nc.convert(otherValue);
+
+		nc = new NumberConverter(NumberConverter.BINARY, NumberConverter.ROMAN_NUMERAL);
+		otherValue = nc.convert(otherValue);
+
+		nc = new NumberConverter(NumberConverter.ROMAN_NUMERAL, NumberConverter.HEXADECIMAL);
+		otherValue = nc.convert(otherValue);
+
+		nc = new NumberConverter(NumberConverter.HEXADECIMAL, NumberConverter.DECIMAL);
+		otherValue = nc.convert(otherValue);
+
+		var integerDecimalValue = parseInt(decimalValue);
+		expect(otherValue).toBe(integerDecimalValue);
+	});
+
 });
