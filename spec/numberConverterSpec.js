@@ -99,6 +99,11 @@ describe("A Number Converter", function() {
 		expect(nc.deconvert("1111111111")).toBe("1.023e3");
 	});
 
-	it("can convert between scientific notation and roman numerals");
+	it("can convert between scientific notation and roman numerals", function() {
+		var nc = new NumberConverter(NumberConverter.SCIENTIFIC_NOTATION, NumberConverter.ROMAN_NUMERAL);
+
+		expect(nc.convert("2.3542e3")).toBe("MMCCCLIV");
+		expect(nc.deconvert("MMMCMLXXVIII")).toBe("3.978e3");
+	});
 
 });
