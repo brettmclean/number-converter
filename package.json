@@ -1,6 +1,6 @@
 {
   "name": "number-converter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Converts numbers between various formats",
   "author": "Brett McLean <brettrmclean@gmail.com>",
   "main": "./lib",
