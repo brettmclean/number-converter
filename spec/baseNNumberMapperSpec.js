@@ -121,6 +121,12 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(45360)).toBe("Z00");
 	});
 
+	it("can convert fractional binary numbers to decimal numbers", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+
+		expect(baseNNumberMapper.toDecimal("111.001")).toBeCloseTo(7.125, 3);
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
