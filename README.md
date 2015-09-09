@@ -32,7 +32,7 @@ Here are the available number types:
 
 To use number-converter in your Node.js project, run:
 ```
-npm install brettmclean/number-converter --save
+npm install number-converter --save
 ```
 
 ## Contributing Code
