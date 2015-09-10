@@ -125,6 +125,10 @@ describe("A Base-N Number Mapper", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
 		expect(baseNNumberMapper.toDecimal("111.001")).toBeCloseTo(7.125, 3);
+		expect(baseNNumberMapper.toDecimal("1000.0001")).toBeCloseTo(8.0625, 4);
+		expect(baseNNumberMapper.toDecimal("0.00001")).toBeCloseTo(0.03125, 5);
+		expect(baseNNumberMapper.toDecimal("0.00000000")).toBeCloseTo(0, 8);
+		expect(baseNNumberMapper.toDecimal("1.111111111")).toBeCloseTo(1.998046875, 9);
 	});
 
 	it("can accept numbers of type string or number", function() {
