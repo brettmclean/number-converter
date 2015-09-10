@@ -139,6 +139,13 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal("7.777")).toBeCloseTo(7.998046875, 9);
 	});
 
+	it("can convert fractional hexadecimal numbers to decimal numbers", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(16);
+
+		expect(baseNNumberMapper.toDecimal("AB.00F")).toBeCloseTo(171.003662109, 9);
+		expect(baseNNumberMapper.toDecimal("C000.FFF")).toBeCloseTo(49152.999755859, 9);
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
