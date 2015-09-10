@@ -131,6 +131,14 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal("1.111111111")).toBeCloseTo(1.998046875, 9);
 	});
 
+	it("can convert fractional octal numbers to decimal numbers", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(8);
+
+		expect(baseNNumberMapper.toDecimal("3.007")).toBeCloseTo(3.013671875, 9);
+		expect(baseNNumberMapper.toDecimal("1000.1234")).toBeCloseTo(512.163085938, 9);
+		expect(baseNNumberMapper.toDecimal("7.777")).toBeCloseTo(7.998046875, 9);
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
