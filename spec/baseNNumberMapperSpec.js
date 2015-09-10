@@ -146,6 +146,12 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.toDecimal("C000.FFF")).toBeCloseTo(49152.999755859, 9);
 	});
 
+	it("can convert decimal numbers to fractional binary numbers", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+
+		expect(baseNNumberMapper.fromDecimal(5.125)).toBe("101.001");
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 

@@ -95,7 +95,7 @@ describe("A Number Converter", function() {
 	it("can convert between scientific notation and binary numbers", function() {
 		var nc = new NumberConverter(NumberConverter.SCIENTIFIC_NOTATION, NumberConverter.BINARY);
 
-		expect(nc.convert("2.4187451e5")).toBe("111011000011010010");
+		expect(nc.convert("2.41874e5")).toBe("111011000011010010");
 		expect(nc.deconvert("1111111111")).toBe("1.023e3");
 	});
 
