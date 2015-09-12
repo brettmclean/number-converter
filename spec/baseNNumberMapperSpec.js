@@ -166,6 +166,18 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(31.9921875)).toBe("11111.1111111");
 	});
 
+	it("can convert decimal numbers to fractional octal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(8, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(8.25)).toBe("10.2");
+		expect(baseNNumberMapper.fromDecimal(511.998046875)).toBe("777.777");
+		expect(baseNNumberMapper.fromDecimal(1.000003815)).toBe("1.000001");
+		expect(baseNNumberMapper.fromDecimal(0.0078125)).toBe("0.004");
+	});
+
 	it("will not include fractional part when converting from integer decimal numbers", function() {
 		var mapperOptions = {
 			fractionalBaseN: true
