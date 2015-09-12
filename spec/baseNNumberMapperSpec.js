@@ -122,7 +122,10 @@ describe("A Base-N Number Mapper", function() {
 	});
 
 	it("can convert fractional binary numbers to decimal numbers", function() {
-		var baseNNumberMapper = new BaseNNumberMapper(2);
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
 
 		expect(baseNNumberMapper.toDecimal("111.001")).toBeCloseTo(7.125, 3);
 		expect(baseNNumberMapper.toDecimal("1000.0001")).toBeCloseTo(8.0625, 4);
@@ -132,7 +135,10 @@ describe("A Base-N Number Mapper", function() {
 	});
 
 	it("can convert fractional octal numbers to decimal numbers", function() {
-		var baseNNumberMapper = new BaseNNumberMapper(8);
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(8, mapperOptions);
 
 		expect(baseNNumberMapper.toDecimal("3.007")).toBeCloseTo(3.013671875, 9);
 		expect(baseNNumberMapper.toDecimal("1000.1234")).toBeCloseTo(512.163085938, 9);
@@ -140,14 +146,20 @@ describe("A Base-N Number Mapper", function() {
 	});
 
 	it("can convert fractional hexadecimal numbers to decimal numbers", function() {
-		var baseNNumberMapper = new BaseNNumberMapper(16);
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(16, mapperOptions);
 
 		expect(baseNNumberMapper.toDecimal("AB.00F")).toBeCloseTo(171.003662109, 9);
 		expect(baseNNumberMapper.toDecimal("C000.FFF")).toBeCloseTo(49152.999755859, 9);
 	});
 
 	it("can convert decimal numbers to fractional binary numbers", function() {
-		var baseNNumberMapper = new BaseNNumberMapper(2);
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
 
 		expect(baseNNumberMapper.fromDecimal(5.125)).toBe("101.001");
 		expect(baseNNumberMapper.fromDecimal(64.015625)).toBe("1000000.000001");
