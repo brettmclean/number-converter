@@ -166,6 +166,25 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(31.9921875)).toBe("11111.1111111");
 	});
 
+	it("will not include fractional part when converting from integer decimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(18)).toBe("10010");
+	});
+
+	it("can accept only options parameter and default to appropriate base", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(10.584)).toBe(10.584);
+		expect(baseNNumberMapper.toDecimal(10.584)).toBe(10.584);
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 
