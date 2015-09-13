@@ -178,6 +178,17 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(0.0078125)).toBe("0.004");
 	});
 
+	it("can convert decimal numbers to fractional hexadecimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(16, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(16.75)).toBe("10.C");
+		expect(baseNNumberMapper.fromDecimal(4095.99609375)).toBe("FFF.FF");
+		expect(baseNNumberMapper.fromDecimal(873.80859375)).toBe("369.CF");
+	});
+
 	it("will not include fractional part when converting from integer decimal numbers", function() {
 		var mapperOptions = {
 			fractionalBaseN: true
