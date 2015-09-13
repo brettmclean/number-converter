@@ -106,6 +106,16 @@ describe("A Number Converter", function() {
 		expect(nc.deconvert("MMMCMLXXVIII")).toBe("3.978e3");
 	});
 
+	it("can convert between fractional binary numbers and fractional hexadecimal numbers", function() {
+		var options = {
+			fractionalBaseN: true
+		};
+		var nc = new NumberConverter(NumberConverter.BINARY, NumberConverter.HEXADECIMAL, options);
+
+		expect(nc.convert("10001110.10101111")).toBe("8E.AF");
+		expect(nc.deconvert("A.83")).toBe("1010.10000011");
+	});
+
 	it("can convert between multiple formats without loss of precision", function() {
 
 		var decimalValue = 3963.998;
