@@ -16,6 +16,15 @@ describe("A Number Converter", function() {
 			expect(nc.convert(1111)).toBe("MCXI");
 			expect(nc.deconvert("DLV")).toBe(555);
 		});
+
+		it("can accept a single number type and an options parameter", function() {
+			var options = {
+				fractionalBaseN: true
+			};
+			var nc = new NumberConverter(NumberConverter.BINARY, options);
+
+			expect(nc.convert(8.125)).toBe("1000.001");
+		});
 	});
 
 	it("has number type constants", function() {
@@ -138,5 +147,4 @@ describe("A Number Converter", function() {
 		var integerDecimalValue = parseInt(decimalValue);
 		expect(otherValue).toBe(integerDecimalValue);
 	});
-
 });

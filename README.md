@@ -28,6 +28,24 @@ Here are the available number types:
 * `NumberConverter.ROMAN_NUMERAL` - Numeric system used in ancient Rome (letters I, V, X, L, C, D and M)
 * `NumberConverter.SCIENTIFIC_NOTATION` - Scientific notation: a way of writing numbers too large or small to be conveniently written as decimal (e.g. 5200000 -> 5.2e6)
 
+## Options
+
+A set of options can be given when creating a NumberConverter:
+```
+var NumberConverter = require("number-converter").NumberConverter;
+
+var options = {
+	fractionalBaseN: true
+};
+var nc = new NumberConverter(NumberConverter.BINARY, NumberConverter.HEXADECIMAL, options);
+
+console.log(nc.convert("10001110.10101111")); // "8E.AF"
+console.log(nc.deconvert("A.83")); // "1010.10000011"
+```
+
+The following options are available:
+* `fractionalBaseN` - If set to true, converts the fractional part of numbers when using `NumberConverter.BINARY`, `NumberConverter.OCTAL` or `NumberConverter.HEXADECIMAL`.
+
 ## Installation
 
 To use number-converter in your Node.js project, run:
