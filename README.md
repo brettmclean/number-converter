@@ -12,7 +12,7 @@ console.log(nc.convert(1234)); // MCCXXXIV
 console.log(nc.deconvert("MCMXCIX")); // 1999
 ```
 
-## Number Types
+### Number Types
 
 A NumberConverter can convert between different numeric representations specified in its constructor. To convert between hexadecimal and binary, write:
 ```
@@ -28,7 +28,7 @@ Here are the available number types:
 * `NumberConverter.ROMAN_NUMERAL` - Numeric system used in ancient Rome (letters I, V, X, L, C, D and M)
 * `NumberConverter.SCIENTIFIC_NOTATION` - Scientific notation: a way of writing numbers too large or small to be conveniently written as decimal (e.g. 5200000 -> 5.2e6)
 
-## Options
+### Options
 
 A set of options can be given when creating a NumberConverter:
 ```
