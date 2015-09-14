@@ -17,29 +17,33 @@ var createTestsForMapper = function(mapperInfo) {
 	describe(mapperInfo.description, function() {
 
 		it("has toDecimal and fromDecimal methods", function() {
-			var bnnm = new mapperInfo.ctor();
+			var mapper = new mapperInfo.ctor();
 
-			expect(typeof bnnm.toDecimal).toBe("function");
-			expect(typeof bnnm.fromDecimal).toBe("function");
+			expect(typeof mapper.toDecimal).toBe("function");
+			expect(typeof mapper.fromDecimal).toBe("function");
 		});
 
 		it("should throw a TypeError when fromDecimal is given a non-number", function() {
-			var rnm = new RomanNumeralMapper();
+			var mapper = new mapperInfo.ctor();
 
 			expect(function() {
-				rnm.fromDecimal("Hello");
+				mapper.fromDecimal("Hello");
 			}).toThrowError(TypeError);
 
 			expect(function() {
-				rnm.fromDecimal(true);
+				mapper.fromDecimal(true);
 			}).toThrowError(TypeError);
 
 			expect(function() {
-				rnm.fromDecimal(function() {});
+				mapper.fromDecimal(function() {});
 			}).toThrowError(TypeError);
 
 			expect(function() {
-				rnm.fromDecimal({});
+				mapper.fromDecimal(undefined);
+			}).toThrowError(TypeError);
+
+			expect(function() {
+				mapper.fromDecimal({});
 			}).toThrowError(TypeError);
 		});
 

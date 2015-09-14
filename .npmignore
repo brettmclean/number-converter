@@ -1,0 +1,6 @@
+spec
+coverage
+
+.jscsrc
+.jshintrc
+.travis.yml

@@ -121,6 +121,106 @@ describe("A Base-N Number Mapper", function() {
 		expect(baseNNumberMapper.fromDecimal(45360)).toBe("Z00");
 	});
 
+	it("ignores fractional part of numbers when option is not true", function() {
+		var baseNNumberMapper = new BaseNNumberMapper(2);
+		expect(baseNNumberMapper.fromDecimal(3.125)).toBe("11");
+		expect(baseNNumberMapper.toDecimal("111.11")).toBe(7);
+
+		var mapperOptions = {
+			fractionalBaseN: false
+		};
+		baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
+		expect(baseNNumberMapper.fromDecimal(3.125)).toBe("11");
+		expect(baseNNumberMapper.toDecimal("111.11")).toBe(7);
+	});
+
+	it("can convert fractional binary numbers to decimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
+
+		expect(baseNNumberMapper.toDecimal("111.001")).toBeCloseTo(7.125, 3);
+		expect(baseNNumberMapper.toDecimal("1000.0001")).toBeCloseTo(8.0625, 4);
+		expect(baseNNumberMapper.toDecimal("0.00001")).toBeCloseTo(0.03125, 5);
+		expect(baseNNumberMapper.toDecimal("0.00000000")).toBeCloseTo(0, 8);
+		expect(baseNNumberMapper.toDecimal("1.111111111")).toBeCloseTo(1.998046875, 9);
+	});
+
+	it("can convert fractional octal numbers to decimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(8, mapperOptions);
+
+		expect(baseNNumberMapper.toDecimal("3.007")).toBeCloseTo(3.013671875, 9);
+		expect(baseNNumberMapper.toDecimal("1000.1234")).toBeCloseTo(512.163085938, 9);
+		expect(baseNNumberMapper.toDecimal("7.777")).toBeCloseTo(7.998046875, 9);
+	});
+
+	it("can convert fractional hexadecimal numbers to decimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(16, mapperOptions);
+
+		expect(baseNNumberMapper.toDecimal("AB.00F")).toBeCloseTo(171.003662109, 9);
+		expect(baseNNumberMapper.toDecimal("C000.FFF")).toBeCloseTo(49152.999755859, 9);
+	});
+
+	it("can convert decimal numbers to fractional binary numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(5.125)).toBe("101.001");
+		expect(baseNNumberMapper.fromDecimal(64.015625)).toBe("1000000.000001");
+		expect(baseNNumberMapper.fromDecimal(31.9921875)).toBe("11111.1111111");
+	});
+
+	it("can convert decimal numbers to fractional octal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(8, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(8.25)).toBe("10.2");
+		expect(baseNNumberMapper.fromDecimal(511.998046875)).toBe("777.777");
+		expect(baseNNumberMapper.fromDecimal(1.000003815)).toBe("1.000001");
+		expect(baseNNumberMapper.fromDecimal(0.0078125)).toBe("0.004");
+	});
+
+	it("can convert decimal numbers to fractional hexadecimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(16, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(16.75)).toBe("10.C");
+		expect(baseNNumberMapper.fromDecimal(4095.99609375)).toBe("FFF.FF");
+		expect(baseNNumberMapper.fromDecimal(873.80859375)).toBe("369.CF");
+	});
+
+	it("will not include fractional part when converting from integer decimal numbers", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(2, mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(18)).toBe("10010");
+	});
+
+	it("can accept only options parameter and default to appropriate base", function() {
+		var mapperOptions = {
+			fractionalBaseN: true
+		};
+		var baseNNumberMapper = new BaseNNumberMapper(mapperOptions);
+
+		expect(baseNNumberMapper.fromDecimal(10.584)).toBe(10.584);
+		expect(baseNNumberMapper.toDecimal(10.584)).toBe(10.584);
+	});
+
 	it("can accept numbers of type string or number", function() {
 		var baseNNumberMapper = new BaseNNumberMapper(2);
 

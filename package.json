@@ -1,14 +1,16 @@
 {
   "name": "number-converter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Converts numbers between various formats",
   "author": "Brett McLean <brettrmclean@gmail.com>",
   "main": "./lib",
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
-    "lint": "./node_modules/jshint/bin/jshint ./lib ./spec",
-    "style": "./node_modules/jscs/bin/jscs ./lib ./spec",
-    "check": "npm test; npm run lint; npm run style"
+    "lint": "./node_modules/.bin/jshint ./lib ./spec",
+    "style": "./node_modules/.bin/jscs ./lib ./spec",
+    "check": "npm test; npm run lint; npm run style",
+    "cover": "node_modules/.bin/istanbul cover -i 'lib/**' ./node_modules/.bin/jasmine",
+    "clean": "rm -Rf npm-debug.log coverage"
   },
   "repository": {
     "type": "git",
@@ -26,9 +28,10 @@
     "scientific notation"
   ],
   "devDependencies": {
+    "istanbul": "^0.3.19",
     "jasmine": "~2.3.2",
-    "jshint": "^2.8.0",
-    "jscs": "^2.1.1"
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0"
   },
   "license": "MIT"
 }
