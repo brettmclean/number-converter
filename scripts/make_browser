@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-DIST_DIR=dist
+# Go up one directory from this script
+cd "$(dirname "$PWD/$0")"
+cd "$(dirname "$PWD")"
+
+DIST_DIR=$PWD/dist
 MODULE_NAME=number_converter
 DEST_PATH=$DIST_DIR/$MODULE_NAME.js
 
