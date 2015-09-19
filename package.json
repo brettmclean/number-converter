@@ -10,7 +10,7 @@
     "style": "./node_modules/.bin/jscs ./lib ./spec",
     "check": "npm test; npm run lint; npm run style",
     "cover": "node_modules/.bin/istanbul cover -i 'lib/**' ./node_modules/.bin/jasmine",
-    "clean": "rm -Rf npm-debug.log coverage",
+    "clean": "rm -Rf npm-debug.log coverage dist",
     "browser": "scripts/make_browser"
   },
   "repository": {
