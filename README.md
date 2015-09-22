@@ -38,4 +38,5 @@ npm install number-converter --save
 ## Other Topics
 
 * [NumberConverter Options](docs/options.md)
+* [Using in the Browser](docs/browser.md)
 * [Contributing Code](docs/contributing.md)
