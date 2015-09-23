@@ -1,4 +1,5 @@
 # number-converter
+[![npm version](https://badge.fury.io/js/number-converter.svg)](http://badge.fury.io/js/number-converter)
 [![Build Status](https://travis-ci.org/brettmclean/number-converter.svg?branch=master)](https://travis-ci.org/brettmclean/number-converter)
 [![devDependency Status](https://david-dm.org/brettmclean/number-converter/dev-status.svg)](https://david-dm.org/brettmclean/number-converter#info=devDependencies)
 
