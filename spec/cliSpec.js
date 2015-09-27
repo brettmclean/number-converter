@@ -6,7 +6,7 @@ var cliApp = require("../lib/cli/app");
 var runCliAppAndGetOutput = function(args, inputData, outputResults, options) {
 	args = args || "";
 	inputData = inputData || new ReadableTestData();
-	outputResults = new WritableTestResults();
+	outputResults = outputResults || new WritableTestResults();
 
 	cliApp.run(args, inputData, outputResults, options);
 	return outputResults.getData();
@@ -38,6 +38,17 @@ describe("The command-line application", function() {
 		var output = runCliAppAndGetOutput([number], null, null, options);
 
 		expect(output).toBe(expectedOutput);
+	});
+
+	it("should fire 'finish' event on output stream when done", function(done) {
+		var number = "1234";
+
+		var resultsStream = new WritableTestResults();
+		resultsStream.on("finish", function() {
+			done();
+		});
+
+		var output = runCliAppAndGetOutput([number], null, resultsStream);
 	});
 
 });
