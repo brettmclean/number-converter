@@ -10,6 +10,10 @@ var runCliAppAndGetOutput = function(args, inputData, outputResults) {
 	return outputResults.getData();
 };
 
+var trimFinalNewline = function(str) {
+	return str.replace(/\n+$/, "");
+};
+
 describe("The command-line application", function() {
 
 	it("should have a run function", function() {
@@ -17,13 +21,13 @@ describe("The command-line application", function() {
 	});
 
 	it("should output a number when given a number as only argument", function() {
-		var args = "3";
-		var output = runCliAppAndGetOutput(args);
-		expect(output).toBe(args);
+		var number = "3";
+		var output = runCliAppAndGetOutput([number]);
+		expect(trimFinalNewline(output)).toBe(number);
 
-		args = "6745.167";
-		output = runCliAppAndGetOutput(args);
-		expect(output).toBe(args);
+		number = "6745.167";
+		output = runCliAppAndGetOutput([number]);
+		expect(trimFinalNewline(output)).toBe(number);
 	});
 
 });
