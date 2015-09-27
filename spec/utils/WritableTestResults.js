@@ -22,4 +22,4 @@ WritableTestResults.prototype._write = function(chunk, encoding, callback) {
 	callback();
 };
 
-module.exports.WritableTestResults = WritableTestResults;
+module.exports = WritableTestResults;
