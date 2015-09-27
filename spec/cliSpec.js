@@ -48,7 +48,17 @@ describe("The command-line application", function() {
 			done();
 		});
 
-		var output = runCliAppAndGetOutput([number], null, resultsStream);
+		runCliAppAndGetOutput([number], null, resultsStream);
+	});
+
+	it("should not throw an error if no writable stream is given", function() {
+		var args = "987";
+		var inputStream = new ReadableTestData();
+		var outputStream = null;
+
+		expect(function() {
+			cliApp.run(args, inputStream, outputStream);
+		}).not.toThrow();
 	});
 
 });
