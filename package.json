@@ -38,5 +38,8 @@
     "jshint": "^2.8.0",
     "uglify-js": "^2.4.24"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.8.1"
+  }
 }

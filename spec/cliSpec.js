@@ -52,13 +52,22 @@ describe("The command-line application", function() {
 	});
 
 	it("should not throw an error if no writable stream is given", function() {
-		var args = "987";
+		var args = ["987"];
 		var inputStream = new ReadableTestData();
 		var outputStream = null;
 
 		expect(function() {
 			cliApp.run(args, inputStream, outputStream);
 		}).not.toThrow();
+	});
+
+	it("can convert from decimal to roman numerals", function() {
+		var args = ["--to", "roman", "851"];
+		var expectedOutput = "DCCCLI";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
 	});
 
 });
