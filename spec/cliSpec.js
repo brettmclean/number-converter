@@ -98,9 +98,18 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
-	it("can provide switches and arguments in any order", function() {
+	it("can accept switches and arguments in any order", function() {
 		var args = ["-t", "binary", "1.048576e6", "-f", "scientific"];
 		var expectedOutput = "100000000000000000000";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
+	it("can accept and convert multiple numbers via the command line at one time", function() {
+		var args = ["--to", "roman", "17", "256", "3333"];
+		var expectedOutput = "XVII\nCCLVI\nMMMCCCXXXIII";
 
 		var output = runCliAppAndGetOutput(args);
 
