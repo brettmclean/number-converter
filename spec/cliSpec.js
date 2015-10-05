@@ -89,4 +89,22 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
+	it("can use short form switches", function() {
+		var args = ["-f", "hexadecimal", "-t", "scientific", "8000"];
+		var expectedOutput = "3.2768e4";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
+	it("can provide switches and arguments in any order", function() {
+		var args = ["-t", "binary", "1.048576e6", "-f", "scientific"];
+		var expectedOutput = "100000000000000000000";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
 });
