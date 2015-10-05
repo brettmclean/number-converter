@@ -107,4 +107,13 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
+	it("should output its input when converting from one format to the same format", function() {
+		var args = ["--from", "roman", "--to", "roman", "III", "LXXV", "MDCCI"];
+		var expectedOutput = "III\nLXXV\nMDCCI";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
 });
