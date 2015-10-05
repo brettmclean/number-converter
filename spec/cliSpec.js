@@ -70,4 +70,14 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
+	it("can convert from binary to decimal", function() {
+
+		var args = ["--from", "binary", "11001110"];
+		var expectedOutput = "206";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
 });
