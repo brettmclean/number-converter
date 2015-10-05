@@ -125,4 +125,18 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
+	it("should convert numbers via an input stream", function() {
+		var args = ["--from", "binary"];
+		var inputData = new ReadableTestData(["10011", "1111111", "1000001000"]);
+		var expectedOutput = "19\n127\n520";
+
+		var output = runCliAppAndGetOutput(args, inputData);
+
+		expect(output).toBe(expectedOutput);
+	});
+
+	xit("should convert numbers via an input stream with Windows-style new line characters", function() {
+
+	});
+
 });
