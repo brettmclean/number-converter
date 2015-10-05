@@ -80,4 +80,13 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
+	it("can convert directly from hexadecimal to scientific notation", function() {
+		var args = ["--from", "hexadecimal", "--to", "scientific", "10000"];
+		var expectedOutput = "6.5536e4";
+
+		var output = runCliAppAndGetOutput(args);
+
+		expect(output).toBe(expectedOutput);
+	});
+
 });
