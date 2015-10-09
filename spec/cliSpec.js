@@ -135,8 +135,13 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
-	xit("should convert numbers via an input stream with Windows-style new line characters", function() {
+	it("should convert numbers via an input stream with Windows-style new line characters", function() {
+		var args = ["--from", "binary"];
+		var inputData = new ReadableTestData(["10011", "1111111"], { windowsLineEndings: true });
+		var expectedOutput = "19\n127";
 
+		var output = runCliAppAndGetOutput(args, inputData);
+		expect(output).toBe(expectedOutput);
 	});
 
 });

@@ -1,7 +1,7 @@
 var Readable = require("stream").Readable;
 var util = require("util");
 
-var ReadableTestData = function(testData) {
+var ReadableTestData = function(testData, options) {
 	Readable.call(this);
 
 	this._data = null;
@@ -10,12 +10,17 @@ var ReadableTestData = function(testData) {
 	} else if(Array.isArray(testData)) {
 		this._data = testData;
 	}
+
+	options = options || {};
+	this._useWindowsLineEndings = options.windowsLineEndings || false;
 };
 util.inherits(ReadableTestData, Readable);
 
 ReadableTestData.prototype._read = function() {
+	var lineEnding = this._useWindowsLineEndings ? "\r\n" : "\n";
+
 	if(this._data) {
-		var str = this._data.join("\n") + "\n";
+		var str = this._data.join(lineEnding) + lineEnding;
 		this.push(str);
 	}
 	this.push(null);
