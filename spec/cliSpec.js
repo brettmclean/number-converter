@@ -12,6 +12,20 @@ var runCliAppAndGetOutput = function(args, inputData, outputResults, options) {
 	return outputResults.getData();
 };
 
+var runCliAppWithCallback = function(args, inputData, outputResults, options, callback) {
+	args = args || "";
+	inputData = inputData || new ReadableTestData();
+	outputResults = outputResults || new WritableTestResults();
+
+	if(typeof callback === "function") {
+		outputResults.on("finish", function() {
+			callback(outputResults.getData());
+		});
+	}
+
+	cliApp.run(args, inputData, outputResults, options);
+};
+
 describe("The command-line application", function() {
 
 	it("should have a run function", function() {
@@ -125,23 +139,30 @@ describe("The command-line application", function() {
 		expect(output).toBe(expectedOutput);
 	});
 
-	it("should convert numbers via an input stream", function() {
+	it("should convert numbers via an input stream", function(done) {
 		var args = ["--from", "binary"];
 		var inputData = new ReadableTestData(["10011", "1111111", "1000001000"]);
 		var expectedOutput = "19\n127\n520";
 
-		var output = runCliAppAndGetOutput(args, inputData);
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
 
-		expect(output).toBe(expectedOutput);
+		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
-	it("should convert numbers via an input stream with Windows-style new line characters", function() {
+	it("should convert numbers via an input stream with Windows-style new line characters", function(done) {
 		var args = ["--from", "binary"];
 		var inputData = new ReadableTestData(["10011", "1111111"], { windowsLineEndings: true });
 		var expectedOutput = "19\n127";
 
-		var output = runCliAppAndGetOutput(args, inputData);
-		expect(output).toBe(expectedOutput);
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
+
+		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
 });
