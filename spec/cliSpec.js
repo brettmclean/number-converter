@@ -178,4 +178,30 @@ describe("The command-line application", function() {
 		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
+	it("provides an option for allowing fractional base-N numbers", function(done) {
+		var args = ["--from", "binary", "--fractional-base-n"];
+		var inputData = new ReadableTestData(["100.001"]);
+		var expectedOutput = "4.125";
+
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
+
+		runCliAppWithCallback(args, inputData, null, null, callback);
+	});
+
+	it("should not recognize fractional base-N numbers unless switch is provided", function(done) {
+		var args = ["--from", "binary"];
+		var inputData = new ReadableTestData(["100.001"]);
+		var expectedOutput = "4";
+
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
+
+		runCliAppWithCallback(args, inputData, null, null, callback);
+	});
+
 });
