@@ -152,6 +152,19 @@ describe("The command-line application", function() {
 		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
+	fit("should convert numbers via an input stream which delivers two numbers at a time", function(done) {
+		var args = ["--to", "roman"];
+		var inputData = new ReadableTestData(["1", "2", "3", "4", "5"], { numbersPerRead: 2 });
+		var expectedOutput = "I\nII\nIII\nIV\nV";
+
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
+
+		runCliAppWithCallback(args, inputData, null, null, callback);
+	});
+
 	it("should convert numbers via an input stream with Windows-style new line characters", function(done) {
 		var args = ["--from", "binary"];
 		var inputData = new ReadableTestData(["10011", "1111111"], { windowsLineEndings: true });

@@ -16,19 +16,31 @@ var ReadableTestData = function(testData, options) {
 
 	options = options || {};
 	this._useWindowsLineEndings = options.windowsLineEndings || false;
+	this._numbersPerRead = options.numbersPerRead || 1;
 };
 util.inherits(ReadableTestData, Readable);
 
 ReadableTestData.prototype._read = function() {
 	var lineEnding = this._useWindowsLineEndings ? "\r\n" : "\n";
 
-	if(this._streamIndex < this._data.length) {
-		var str = this._data[this._streamIndex];
-		this.push(str + lineEnding);
-		this._streamIndex++;
-	} else {
+	var outputStr = "";
+
+	for(var i = 0; i < this._numbersPerRead; i++) {
+		if(this._streamIndex < this._data.length) {
+			var str = this._data[this._streamIndex];
+			outputStr += str + lineEnding;
+			this._streamIndex++;
+		}
+	}
+
+	if(outputStr) {
+		this.push(outputStr);
+	}
+
+	if(this._streamIndex >= this._data.length) {
 		this.push(null);
 	}
+
 };
 
 module.exports = ReadableTestData;
