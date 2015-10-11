@@ -13,6 +13,7 @@
     "clean": "rm -Rf npm-debug.log coverage dist",
     "browser": "scripts/make_browser"
   },
+  "bin": "./lib/cli.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/brettmclean/number-converter.git"
