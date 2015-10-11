@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var cliApp = require("./cli/app");
+var cliApp = require("../lib/cli/app");
 
 var args = process.argv.slice(2);
 var options = {
