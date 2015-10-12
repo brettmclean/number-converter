@@ -29,7 +29,9 @@
     "hexadecimal",
     "scientific notation",
     "number",
-    "convert"
+    "convert",
+    "cli",
+    "command line"
   ],
   "devDependencies": {
     "browserify": "^11.1.0",
