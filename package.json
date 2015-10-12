@@ -4,6 +4,8 @@
   "description": "Converts numbers between various formats",
   "author": "Brett McLean <brettrmclean@gmail.com>",
   "main": "./lib",
+  "bin": "./bin/cli.js",
+  "man": "./docs/number-converter.1",
   "scripts": {
     "test": "node_modules/.bin/jasmine",
     "lint": "node_modules/.bin/jshint ./lib ./spec",
@@ -13,7 +15,6 @@
     "clean": "rm -Rf npm-debug.log coverage dist",
     "browser": "scripts/make_browser"
   },
-  "bin": "./bin/cli.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/brettmclean/number-converter.git"
