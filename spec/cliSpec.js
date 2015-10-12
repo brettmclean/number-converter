@@ -191,6 +191,16 @@ describe("The command-line application", function() {
 		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
+	it("should not throw an error if no readable stream is given", function() {
+		var args = ["--to", "octal"];
+		var inputData = null;
+		var outputResults = new WritableTestResults();
+
+		expect(function() {
+			cliApp.run(args, inputData, outputResults);
+		}).not.toThrow();
+	});
+
 	it("provides an option for allowing fractional base-N numbers", function(done) {
 		var args = ["--from", "binary", "--fractional-base-n"];
 		var inputData = new ReadableTestData(["100.001"]);
