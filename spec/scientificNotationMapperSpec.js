@@ -82,6 +82,20 @@ describe("A Scientific Notation Mapper", function() {
 		expect(snm.fromDecimal(1)).toBe("1e0");
 	});
 
+	it("can convert string decimal numbers to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal("6.12")).toBe("6.12e0");
+		expect(snm.fromDecimal("-12.345")).toBe("-1.2345e1");
+		expect(snm.fromDecimal("3141592654")).toBe("3.141592654e9");
+	});
+
+	it("can convert zero as string to scientific notation", function() {
+		var snm = new ScientificNotationMapper();
+
+		expect(snm.fromDecimal("0")).toBe("0e0");
+	});
+
 	it("can convert MeN notation with positive coefficients and exponents to decimal", function() {
 		var snm = new ScientificNotationMapper();
 
