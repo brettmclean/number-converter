@@ -178,6 +178,19 @@ describe("The command-line application", function() {
 		runCliAppWithCallback(args, inputData, null, null, callback);
 	});
 
+	it("should not output anything if input stream contains only new line characters", function(done) {
+		var args = ["--from", "binary", "--to", "scientific"];
+		var inputData = new ReadableTestData(["\n\n", "\n"]);
+		var expectedOutput = "";
+
+		var callback = function(output) {
+			expect(output).toBe(expectedOutput);
+			done();
+		};
+
+		runCliAppWithCallback(args, inputData, null, null, callback);
+	});
+
 	it("provides an option for allowing fractional base-N numbers", function(done) {
 		var args = ["--from", "binary", "--fractional-base-n"];
 		var inputData = new ReadableTestData(["100.001"]);
