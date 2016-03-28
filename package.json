@@ -40,7 +40,7 @@
     "jasmine": "~2.3.2",
     "jscs": "^2.1.1",
     "jshint": "^2.8.0",
-    "uglify-js": "^2.4.24"
+    "uglify-js": "^2.6.2"
   },
   "license": "MIT",
   "dependencies": {
