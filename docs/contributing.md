@@ -1,11 +1,13 @@
 ## Contributing Code
 
-To contribute to number-converter, clone this repository and install dependencies:
+To contribute to number-converter, fork this repository, clone it and install dependencies:
 ```
-git clone https://github.com/brettmclean/number-converter.git
+git clone https://github.com/YOUR_USERNAME/number-converter.git
 cd number-converter
 npm install
 ```
+
+All code changes should be made against the develop branch: `git checkout develop`
 
 ### Verifying Code
 
